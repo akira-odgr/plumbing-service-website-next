@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: oklch(100% 0.00011 271.152);
+    --foreground: oklch(20.463% 0.00002 271.152);
+    --primary-clr: oklch(29.403% 0.0789 252.054);
+    --primary-clr-2: oklch(21.746% 0.05238 249.711);
+    --secondary-clr: oklch(89.749% 0.12718 89.114);
+    --secondary-clr-1: oklch(76.042% 0.10646 89.451);
+    --gray-clr: oklch(95.514% 0.00011 271.152);
+    --gray-clr-2: oklch(80.152% 0.00009 271.152);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    /* colors */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primaryClr: var(--primary-clr);
+    --color-primaryClr-2: var(--primary-clr-2);
+    --color-secondaryClr: var(--secondary-clr);
+    --color-secondaryClr-1: var(--secondary-clr-1);
+    --color-secondaryClr-2: var(--secondary-clr-2);
+    --color-grayClr: var(--gray-clr);
+    --color-grayClr-2: var(--gray-clr);
+    /* Typography */
+    --font-rubik: var(--font-rubik);
+    --font-dmSans: var(--font-dmSans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@layer bace {
+    body {
+        @apply font-dmSans;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply font-rubik leading-tight;
+    }
+
+    h1,
+    h2 {
+        @apply font-bold;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-size: clamp(
+            2rem,
+            1.676300578034682rem + 1.61849710982659vw,
+            2.875rem
+        );
+    }
+
+    p {
+        font-weight: 400;
+        font-size: 0.875rem;
+        font-size: clamp(
+            0.875rem,
+            0.7825144508670521rem + 0.46242774566473993vw,
+            1.125rem
+        );
+    }
+
+    button {
+        @apply cursor-pointer;
+    }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+    .container {
+        @apply px-4 mx-auto sm:px-8 lg:px-14 xl:max-w-[1185px];
+    }
+
+    .link {
+        @apply relative uppercase py-2.5 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primaryClr after:w-0 after:h-0.5 hover:after:w-full after:transition-all;
+    }
+
+    .primary-btn {
+        @apply px-6 md:px-8 py-2.5 md:py-3.5 bg-secondaryClr text-black font-bold uppercase rounded-[50px] hover:bg-gray-900 hover:text-white transition-colors;
+    }
+
+    .secondary-btn {
+        @apply bg-primaryClr text-white uppercase font-semibold py-2.5 px-8 rounded-full inline-block text-center hover:bg-primaryClr-2 transition-colors;
+    }
+
+    .subtitle {
+        @apply text-sm uppercase lg:text-base;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-size: clamp(
+            1.25rem,
+            1.157514450867052rem + 0.46242774566473993vw,
+            1.5rem
+        );
+    }
+
+    .text-outline {
+        color: transparent;
+        -webkit-text-stroke: 1px var(--color-primaryClr);
+    }
 }
