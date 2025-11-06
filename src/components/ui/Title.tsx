@@ -3,7 +3,7 @@ import { cn } from "@/libs/utils/cn";
 interface titleProps {
     subtitle: string;
     title: string;
-    text: string;
+    text?: string;
     classes: string;
 }
 

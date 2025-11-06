@@ -32,7 +32,7 @@ export const ServicesSec = () => {
                     ))}
 
                     {/* Cta card */}
-                    <div>
+                    <div className="bg-secondaryClr rounded-2xl px-7 py-6 flex flex-col">
                         {/* Icon */}
                         <span>
                             <Image
@@ -44,13 +44,18 @@ export const ServicesSec = () => {
                         </span>
 
                         {/* Text */}
-                        <p>
+                        <p className="font-rubik my-4">
                             Complete pipe repair and replacement services.
                             Licensed professionals with proven results.
                         </p>
 
                         {/* Btn */}
-                        <Link href={"/services"}>explore more</Link>
+                        <Link
+                            href={"/services"}
+                            className={cn("secondary-btn", "mt-auto")}
+                        >
+                            explore more
+                        </Link>
                     </div>
                 </div>
             </div>

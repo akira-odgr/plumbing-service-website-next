@@ -90,6 +90,8 @@
     }
 
     .card-title {
+        @apply font-semibold;
+
         font-size: 1.25rem;
         font-size: clamp(
             1.25rem,
