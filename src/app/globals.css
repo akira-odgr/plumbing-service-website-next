@@ -22,12 +22,13 @@
     --color-secondaryClr-2: var(--secondary-clr-2);
     --color-grayClr: var(--gray-clr);
     --color-grayClr-2: var(--gray-clr);
+
     /* Typography */
     --font-rubik: var(--font-rubik);
     --font-dmSans: var(--font-dmSans);
 }
 
-@layer bace {
+@layer base {
     body {
         @apply font-dmSans;
     }

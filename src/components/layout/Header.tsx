@@ -6,9 +6,12 @@ import { RiCloseFill, RiMenuFill } from "@remixicon/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { RemoveScroll } from "react-remove-scroll";
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const pathname = usePathname();
 
     const handleClick = () => setIsOpen(!isOpen);
     return (
@@ -25,39 +28,44 @@ export const Header = () => {
                 </Link>
 
                 {/* Mobile Menu */}
-                <nav
-                    className={cn(
-                        "fixed top-0 left-0 bg-white h-screen w-full text-black flex flex-col items-center justify-center -translate-y-full transition-transform",
-                        "lg:hidden",
-                        isOpen && "translate-y-0"
-                    )}
-                >
-                    {/* List */}
-                    <ul className="space-y-7 text-center">
-                        {navItems.map((item) => (
-                            <li key={item.id}>
-                                <Link
-                                    href={item.href}
-                                    className={cn(
-                                        "text-xl font-semibold",
-                                        "link"
-                                    )}
-                                >
-                                    {item.label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-
-                    {/* Btn */}
-                    <Link
-                        href={"/contact"}
-                        className={cn("mt-10 text-lg", "primary-btn")}
+                <RemoveScroll enabled={isOpen}>
+                    <nav
+                        className={cn(
+                            "fixed top-0 left-0 bg-white h-screen w-full text-black flex flex-col items-center justify-center -translate-y-full transition-transform",
+                            "lg:hidden",
+                            isOpen && "translate-y-0"
+                        )}
                     >
-                        Contact
-                    </Link>
-                </nav>
+                        {/* List */}
+                        <ul className="space-y-7 text-center">
+                            {navItems.map((item) => (
+                                <li key={item.id}>
+                                    <Link
+                                        href={item.href}
+                                        className={cn(
+                                            "text-xl font-semibold",
+                                            "link",
+                                            pathname === item.href &&
+                                                "after:w-full!"
+                                        )}
+                                        onClick={handleClick}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
 
+                        {/* Btn */}
+                        <Link
+                            href={"/contact"}
+                            className={cn("mt-10 text-lg", "primary-btn")}
+                            onClick={handleClick}
+                        >
+                            Contact
+                        </Link>
+                    </nav>
+                </RemoveScroll>
                 {/* Desktop Menu */}
                 <nav className={cn("hidden", "lg:flex lg:items-center gap-10")}>
                     {/* List */}
@@ -68,8 +76,10 @@ export const Header = () => {
                                     href={item.href}
                                     className={cn(
                                         "link font-semibold",
-                                        "after:!bg-secondaryClr",
-                                        "hover:text-secondaryClr"
+                                        "after:bg-secondaryClr!",
+                                        "hover:text-secondaryClr",
+                                        pathname === item.href &&
+                                            "after:w-full!"
                                     )}
                                 >
                                     {item.label}

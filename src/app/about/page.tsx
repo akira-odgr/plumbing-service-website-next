@@ -1,11 +1,18 @@
 import React from "react";
+import AboutUs from "./sections/AboutUs";
+import OurStory from "./sections/OurStory";
+import OurTeam from "./sections/OurTeam";
+import OurFoundation from "./sections/OurFoundation";
 
-const page = () => {
+const AboutPage = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            About page
-        </div>
+        <>
+            <AboutUs />
+            <OurStory />
+            <OurTeam />
+            <OurFoundation />
+        </>
     );
 };
 
-export default page;
+export default AboutPage;

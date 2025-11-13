@@ -1,10 +1,11 @@
 import React from "react";
+import OurServices from "./sections/OurServices";
 
 const page = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            Services page
-        </div>
+        <>
+            <OurServices />
+        </>
     );
 };
 
