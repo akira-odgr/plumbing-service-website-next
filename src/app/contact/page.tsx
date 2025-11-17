@@ -1,10 +1,11 @@
 import React from "react";
+import ContactUsPage from "./sections/ContactUsPage";
 
 export const page = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            Contact page
-        </div>
+        <>
+            <ContactUsPage />
+        </>
     );
 };
 

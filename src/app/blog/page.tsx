@@ -1,10 +1,11 @@
 import React from "react";
+import BlogPage from "./sections/BlogPage";
 
 export const page = () => {
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            Blog page
-        </div>
+        <>
+            <BlogPage />
+        </>
     );
 };
 

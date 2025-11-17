@@ -1,10 +1,11 @@
-import React from "react";
-import OurServices from "./sections/OurServices";
+import { OurServices } from "./sections/OurServices";
+import { Cta } from "@/components/layout/Cta";
 
 const page = () => {
     return (
         <>
             <OurServices />
+            <Cta />
         </>
     );
 };

@@ -423,7 +423,7 @@ export const blogPageCardItems = [
     },
     {
         id: 9,
-        img: "/images/blog-img-9.png",
+        img: "/images/blog-img-8.png",
         title: "Understanding Your Home's Plumbing System",
         date: "Nov 04,2023",
     },

@@ -1,18 +1,17 @@
-import Card from "@/components/ui/Card";
-import Title from "@/components/ui/Title";
-import { servicesPageCardItems } from "@/data/data";
+import BlogCard from "@/components/ui/BlogCard";
+import { blogPageCardItems } from "@/data/data";
 import { cn } from "@/libs/utils/cn";
 
-export const OurServices = () => {
+export const BlogPage = () => {
     return (
-        <section className={cn("py-32", "lg:py-40")}>
+        <section className={cn("pt-32 pb-20", "lg:pt-40")}>
             <div className={cn("container space-y-10", "lg:space-y-16")}>
                 {/* Title */}
                 <div className="text-center max-w-xl mx-auto">
-                    <h2>Our Services</h2>
+                    <h2>Blog</h2>
                     <p>
-                        we provide a full range of expert plumbing services to
-                        meet all your residential and commercial needs
+                        Discover helpful plumbing tips, maintenance advice, and
+                        expert insights from the Plufi team.
                     </p>
                 </div>
                 {/* Card wrapper */}
@@ -23,8 +22,8 @@ export const OurServices = () => {
                         "lg:grid-cols-3"
                     )}
                 >
-                    {servicesPageCardItems.map((item) => (
-                        <Card key={item.id} {...item} />
+                    {blogPageCardItems.map((item) => (
+                        <BlogCard key={item.id} {...item} />
                     ))}
                 </div>
             </div>
@@ -32,4 +31,4 @@ export const OurServices = () => {
     );
 };
 
-export default OurServices;
+export default BlogPage;
