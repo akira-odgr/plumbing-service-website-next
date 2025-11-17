@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import NextTopLoader from "nextjs-toploader";
+import { LenisProvider } from "@/provider/LenisProvider";
 
 const rubik = localFont({
     src: [
@@ -39,14 +40,16 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ja">
-            <body
-                className={`${rubik.variable} ${dmSans.variable} antialiased`}
-            >
-                <NextTopLoader color="#ffd974" showSpinner={false} />
-                <Header />
-                <main className="min-h-screen">{children}</main>
-                <Footer />
-            </body>
+            <LenisProvider>
+                <body
+                    className={`${rubik.variable} ${dmSans.variable} antialiased`}
+                >
+                    <NextTopLoader color="#ffd974" showSpinner={false} />
+                    <Header />
+                    <main className="min-h-screen">{children}</main>
+                    <Footer />
+                </body>
+            </LenisProvider>
         </html>
     );
 }
