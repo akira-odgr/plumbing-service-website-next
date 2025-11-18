@@ -1,12 +1,22 @@
+"use client";
+
 import { footerList, socialIcons } from "@/data/data";
 import { cn } from "@/libs/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/motion/animation";
 
 export const Footer = () => {
     return (
         <footer className="pt-20 pb-10">
-            <div className="container">
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                transition={{ staggerChildren: 0.3 }}
+                viewport={{ once: true }}
+                className="container"
+            >
                 {/* Footer top */}
                 <div
                     className={cn(
@@ -16,7 +26,7 @@ export const Footer = () => {
                     )}
                 >
                     {/* Footer brand */}
-                    <div className="space-y-4">
+                    <motion.div variants={fadeInUp} className="space-y-4">
                         <span>
                             <Image
                                 src={"/images/footer-logo.png"}
@@ -44,10 +54,10 @@ export const Footer = () => {
                                 </a>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
                     {/* Footer list */}
                     {footerList.map((item) => (
-                        <div key={item.id}>
+                        <motion.div variants={fadeInUp} key={item.id}>
                             <p className="font-semibold">{item.title}</p>
                             <ul className="space-y-1.5 mt-3">
                                 {item.list.map((label, index) => (
@@ -70,15 +80,15 @@ export const Footer = () => {
                                     </li>
                                 ))}
                             </ul>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
                 {/* Footer bottom */}
-                <p className="mt-14">
+                <motion.p variants={fadeInUp} className="mt-14">
                     &copy; {new Date().getFullYear()} Made with Keencoding.All
                     rights reserved.
-                </p>
-            </div>
+                </motion.p>
+            </motion.div>
         </footer>
     );
 };

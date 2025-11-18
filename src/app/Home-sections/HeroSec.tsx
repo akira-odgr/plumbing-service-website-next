@@ -81,7 +81,8 @@ export const HeroSec = () => {
                 )}
             >
                 {/* Card 01 */}
-                <div
+                <motion.div
+                    variants={fadeInUp}
                     className={cn(
                         "w-full bg-white shadow-lg pl-[21px] pr-14 py-7 rounded-2xl flex flex-col gap-4",
                         "sm:flex-row sm:items-center",
@@ -102,9 +103,10 @@ export const HeroSec = () => {
                         Emergency plumbing repairs available 24/7. Fast response
                         time guaranteed.
                     </p>
-                </div>
+                </motion.div>
                 {/* Card 02 */}
-                <div
+                <motion.div
+                    variants={fadeInUp}
                     className={cn(
                         "w-full bg-secondaryClr px-[26px] py-5 rounded-xl flex flex-col shadow-sm",
                         "lg:max-w-[230px]"
@@ -127,7 +129,7 @@ export const HeroSec = () => {
 
                     {/* Btn */}
                     <button className="secondary-btn max-w-max">hire us</button>
-                </div>
+                </motion.div>
             </div>
         </motion.section>
     );

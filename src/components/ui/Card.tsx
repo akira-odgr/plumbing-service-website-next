@@ -1,5 +1,9 @@
+"use client";
+
 import { cn } from "@/libs/utils/cn";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/motion/animation";
 
 interface cardProps {
     id: string;
@@ -10,7 +14,10 @@ interface cardProps {
 
 export const Card = ({ id, title, text, icon }: cardProps) => {
     return (
-        <div className="bg-grayClr border border-primaryClr rounded-2xl px-7 py-9 flex flex-col">
+        <motion.div
+            variants={fadeInUp}
+            className="bg-grayClr border border-primaryClr rounded-2xl px-7 py-9 flex flex-col"
+        >
             <h3 className="card-title">{title}</h3>
             <p className="mt-4 mb-6">{text}</p>
             <div className="flex items-center justify-between mt-auto">
@@ -27,7 +34,7 @@ export const Card = ({ id, title, text, icon }: cardProps) => {
                     {id}.
                 </h4>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

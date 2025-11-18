@@ -6,10 +6,18 @@ import { servicesSecCardItems } from "@/data/data";
 import { cn } from "@/libs/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/motion/animation";
 
 export const ServicesSec = () => {
     return (
-        <section className="bg-grayClr/30 py-20">
+        <motion.section
+            initial="hidden"
+            whileInView="visible"
+            transition={{ staggerChildren: 0.3 }}
+            viewport={{ once: true }}
+            className="bg-grayClr/30 py-20"
+        >
             <div className="container">
                 {/* Title */}
                 <Title
@@ -32,7 +40,10 @@ export const ServicesSec = () => {
                     ))}
 
                     {/* Cta card */}
-                    <div className="bg-secondaryClr rounded-2xl px-7 py-6 flex flex-col">
+                    <motion.div
+                        variants={fadeInUp}
+                        className="bg-secondaryClr rounded-2xl px-7 py-6 flex flex-col"
+                    >
                         {/* Icon */}
                         <span>
                             <Image
@@ -56,10 +67,10 @@ export const ServicesSec = () => {
                         >
                             explore more
                         </Link>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

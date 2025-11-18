@@ -1,4 +1,8 @@
+"use client";
+
 import { cn } from "@/libs/utils/cn";
+import { fadeInUp } from "@/motion/animation";
+import { motion } from "framer-motion";
 
 interface titleProps {
     subtitle: string;
@@ -11,10 +15,10 @@ export const Title = ({ subtitle, title, text, classes }: titleProps) => {
     return (
         <div className={cn(classes)}>
             <div>
-                <p>{subtitle}</p>
-                <h2>{title}</h2>
+                <motion.p variants={fadeInUp}>{subtitle}</motion.p>
+                <motion.h2 variants={fadeInUp}>{title}</motion.h2>
             </div>
-            <p>{text}</p>
+            <motion.p variants={fadeInUp}>{text}</motion.p>
         </div>
     );
 };

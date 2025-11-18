@@ -1,12 +1,20 @@
+"use client";
+
 import { ctaListItems } from "@/data/data";
 import { cn } from "@/libs/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeIn, fadeInUp } from "@/motion/animation";
 
 export const Cta = () => {
     return (
         <section className="bg-secondaryClr pt-8">
-            <div
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                transition={{ staggerChildren: 0.3 }}
+                viewport={{ once: true }}
                 className={cn(
                     "container grid",
                     "lg:grid-cols-[1fr_0.7fr] lg:item-end"
@@ -14,13 +22,14 @@ export const Cta = () => {
             >
                 {/* Content */}
                 <div className="my-14">
-                    <h2 className="max-w-lg">
+                    <motion.h2 variants={fadeInUp} className="max-w-lg">
                         Have a Problem we’ll fix it today
-                    </h2>
+                    </motion.h2>
                     {/* list */}
                     <ul className={cn("grid gap-5 mt-8", "md:grid-cols-2")}>
                         {ctaListItems.map((item) => (
-                            <li
+                            <motion.li
+                                variants={fadeInUp}
                                 key={item.id}
                                 className="flex items-start gap-3.5"
                             >
@@ -32,25 +41,27 @@ export const Cta = () => {
                                     <h3 className="card-title">{item.title}</h3>
                                     <p>{item.label}</p>
                                 </div>
-                            </li>
+                            </motion.li>
                         ))}
                     </ul>
 
                     {/* Btn */}
-                    <Link href={"/contact"} className="secondary-btn py-3">
-                        Contact Us
-                    </Link>
+                    <motion.div variants={fadeInUp}>
+                        <Link href={"/contact"} className="secondary-btn py-3">
+                            Contact Us
+                        </Link>
+                    </motion.div>
                 </div>
                 {/* Image */}
-                <div className="max-w-max mx-auto">
+                <motion.div variants={fadeIn} className="max-w-max mx-auto">
                     <Image
                         src={"/images/cta-img.png"}
                         alt="cta image"
                         width={501}
                         height={503}
                     />
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </section>
     );
 };

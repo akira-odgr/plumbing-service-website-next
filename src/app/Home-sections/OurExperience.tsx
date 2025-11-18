@@ -4,11 +4,17 @@ import Title from "@/components/ui/Title";
 import { ourExperienceSecItems } from "@/data/data";
 import { cn } from "@/libs/utils/cn";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeIn, fadeInUp } from "@/motion/animation";
 
 export const OurExperience = () => {
     return (
         <section className={cn("bg-primaryClr py-22", "lg:py-40")}>
-            <div
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                transition={{ staggerChildren: 0.3 }}
+                viewport={{ once: true }}
                 className={cn(
                     "container grid gap-[61px]",
                     "lg:grid-cols-2 lg:items-center"
@@ -33,18 +39,18 @@ export const OurExperience = () => {
                     >
                         {ourExperienceSecItems.map((item) => (
                             // Stat
-                            <div key={item.id}>
+                            <motion.div variants={fadeInUp} key={item.id}>
                                 <h3 className={cn("text-3xl", "sm:text-4xl")}>
                                     {item.value}
                                     {item.id === 2 && "k"}+
                                 </h3>
                                 <p>{item.label}</p>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
                 {/* Image */}
-                <div className="max-w-max mx-auto">
+                <motion.div variants={fadeIn} className="max-w-max mx-auto">
                     <Image
                         src={"/images/section-img-2.png"}
                         alt="section image"
@@ -52,8 +58,8 @@ export const OurExperience = () => {
                         height={503}
                         className="rounded-xl"
                     />
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </section>
     );
 };

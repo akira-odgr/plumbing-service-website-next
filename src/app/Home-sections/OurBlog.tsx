@@ -1,13 +1,23 @@
+"use client";
+
 import { BlogCard } from "@/components/ui/BlogCard";
 import { Title } from "@/components/ui/Title";
 import { blogSecCardItems } from "@/data/data";
 import { cn } from "@/libs/utils/cn";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/motion/animation";
 
 export const OurBlog = () => {
     return (
         <section className="py-22">
-            <div className="container">
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                transition={{ staggerChildren: 0.3 }}
+                viewport={{ once: true }}
+                className="container"
+            >
                 {/* Title */}
                 <div className="flex items-center justify-between gap-10 flex-wrap">
                     <Title
@@ -16,9 +26,11 @@ export const OurBlog = () => {
                         classes="max-w-lg"
                     />
                     {/* Btn */}
-                    <Link href={"/blog"} className="primary-btn">
-                        Browse all Articles
-                    </Link>
+                    <motion.div variants={fadeInUp}>
+                        <Link href={"/blog"} className="primary-btn">
+                            Browse all Articles
+                        </Link>
+                    </motion.div>
                 </div>
                 {/* Card wrapper */}
                 <div
@@ -32,7 +44,7 @@ export const OurBlog = () => {
                         <BlogCard key={item.id} {...item} />
                     ))}
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 };

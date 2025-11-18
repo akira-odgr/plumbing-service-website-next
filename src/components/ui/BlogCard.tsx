@@ -3,6 +3,8 @@
 import { cn } from "@/libs/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/motion/animation";
 
 interface cardProps {
     id: number;
@@ -13,7 +15,10 @@ interface cardProps {
 
 export const BlogCard = ({ id, img, title, date }: cardProps) => {
     return (
-        <div className="border border-primaryClr/25 p-3 rounded-xl">
+        <motion.div
+            variants={fadeInUp}
+            className="border border-primaryClr/25 p-3 rounded-xl"
+        >
             {/* Image */}
             <div>
                 <Image
@@ -38,7 +43,7 @@ export const BlogCard = ({ id, img, title, date }: cardProps) => {
                 </Link>
                 <p>{date}</p>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

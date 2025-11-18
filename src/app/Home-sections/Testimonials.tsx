@@ -4,10 +4,18 @@ import Title from "@/components/ui/Title";
 import { testimonialsCardItems } from "@/data/data";
 import { cn } from "@/libs/utils/cn";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/motion/animation";
 
 export const Testimonials = () => {
     return (
-        <section className="bg-primaryClr py-20">
+        <motion.section
+            initial="hidden"
+            whileInView="visible"
+            transition={{ staggerChildren: 0.3 }}
+            viewport={{ once: true }}
+            className="bg-primaryClr py-20"
+        >
             <div
                 className={cn(
                     "container grid gap-16",
@@ -23,15 +31,19 @@ export const Testimonials = () => {
                         classes="text-white space-y-4"
                     />
                     {/* Btn */}
-                    <button className={cn("primary-btn", "mt-4")}>
+                    <motion.button
+                        variants={fadeInUp}
+                        className={cn("primary-btn", "mt-4")}
+                    >
                         learn more
-                    </button>
+                    </motion.button>
                 </div>
                 {/* Card wrapper */}
                 <div className={cn("grid gap-6", "sm:grid-cols-2")}>
                     {testimonialsCardItems.map((item) => (
                         // Card
-                        <div
+                        <motion.div
+                            variants={fadeInUp}
                             key={item.id}
                             className="bg-white p-6 rounded-xl flex flex-col space-y-1.5"
                         >
@@ -50,11 +62,11 @@ export const Testimonials = () => {
                                 {/* text */}
                                 <p className="card-title">{item.name}</p>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 
