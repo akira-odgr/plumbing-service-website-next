@@ -1,12 +1,19 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { cn } from "@/libs/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
+import { fadeIn, fadeInUp } from "@/motion/animation";
 
 export const HeroSec = () => {
     return (
-        <section className="section">
+        <motion.section
+            initial="hidden"
+            whileInView="visible"
+            transition={{ staggerChildren: 0.3 }}
+            viewport={{ once: true }}
+        >
             {/* wrapper */}
             <div className="bg-primaryClr pt-28">
                 <div
@@ -18,8 +25,14 @@ export const HeroSec = () => {
                 >
                     {/* content */}
                     <div className="text-white">
-                        <p className="subtitle mb-1.5">Read for help you</p>
-                        <h1
+                        <motion.p
+                            variants={fadeInUp}
+                            className="subtitle mb-1.5"
+                        >
+                            Read for help you
+                        </motion.p>
+                        <motion.h1
+                            variants={fadeInUp}
                             className={cn(
                                 "text-4xl",
                                 "sm:text-5xl",
@@ -29,20 +42,25 @@ export const HeroSec = () => {
                             Expert Plumbing{" "}
                             <span className="text-secondaryClr">service</span>{" "}
                             provider
-                        </h1>
-                        <p className="mt-4 mb-10 max-w-lg">
+                        </motion.h1>
+                        <motion.p
+                            variants={fadeInUp}
+                            className="mt-4 mb-10 max-w-lg"
+                        >
                             From emergency repairs to complete installations, we
                             deliver fast, reliable plumbing solutions for your
                             home and business.
-                        </p>
+                        </motion.p>
 
                         {/* Btn */}
-                        <Link href={"/about"} className="primary-btn">
-                            learn more
-                        </Link>
+                        <motion.div variants={fadeInUp}>
+                            <Link href={"/about"} className="primary-btn">
+                                learn more
+                            </Link>
+                        </motion.div>
                     </div>
                     {/* Image */}
-                    <div className="relative z-10">
+                    <motion.div variants={fadeIn} className="relative z-10">
                         <Image
                             src="/images/hero-img.png"
                             alt="hero image"
@@ -50,7 +68,7 @@ export const HeroSec = () => {
                             height={600}
                             priority
                         />
-                    </div>
+                    </motion.div>
                 </div>
             </div>
 
@@ -111,7 +129,7 @@ export const HeroSec = () => {
                     <button className="secondary-btn max-w-max">hire us</button>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 
