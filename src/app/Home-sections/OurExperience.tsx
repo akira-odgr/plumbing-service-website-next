@@ -52,7 +52,7 @@ export const OurExperience = () => {
                 {/* Image */}
                 <motion.div variants={fadeIn} className="max-w-max mx-auto">
                     <Image
-                        src={"/images/section-img-2.png"}
+                        src={"/images/Section-img-2.png"}
                         alt="section image"
                         width={356}
                         height={503}
